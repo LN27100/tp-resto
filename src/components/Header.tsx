@@ -17,7 +17,7 @@ export default function Header() {
               <Link href="/recipes" className="hover:underline">Recettes</Link>
             </li>
             <li>
-              <Link href="/auth/login" className="hover:underline">Connexion</Link>
+              <Link href="/auth" className="hover:underline">Connexion</Link>
             </li>
           </ul>
         </nav>

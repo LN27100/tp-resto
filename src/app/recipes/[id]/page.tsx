@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
 const recipes = [
-  { id: 1, name: "Spaghetti Carbonara", description: "Un classique ita-lien." },
-  { id: 2, name: "Poulet Basquaise", description: "Un plat savoureux du sud-ouest." },
+  { id: 1, name: "Omelette couverture", description: "La douceur de l'ours recouvert d'une succulente omelette" },
+  { id: 2, name: "Brocolis clown", description: "Un peu d'humour pour faire passer le vert !" },
 ];
 
 export default function RecipeDetail({ params }: { params: { id: string } }) {

@@ -5,7 +5,6 @@ export default function Home() {
     <section className="py-8">
       <div className="text-center">
         <h1 className="text-3xl font-bold">Découvrez la cuisine et les recettes atypiques du chef Boubou</h1>
-
       </div>
       <div className="flex justify-center mt-8">
         <Image
@@ -21,19 +20,18 @@ export default function Home() {
           Voir les recettes
         </a>
       </div>
-      <div className="flex justify-center mt-8 space-x-8">
-        <div className="border rounded-lg p-4 shadow-md w-64 text-left">
-          <h2 className="text-xl font-semibold">Horaires</h2>
-          <p><strong>Lundi - Vendredi :</strong> 12h00 - 15h00, 19h00 - 22h00</p>
-          <p><strong>Samedi :</strong> 12h00 - 23h00</p>
-          <p><strong>Dimanche :</strong> Fermé</p>
+      <div className="flex justify-center mt-8 space-x-40">
+        <div className="border rounded-lg p-8 shadow-md w-96 text-left">
+          <h2 className="text-2xl font-semibold mb-4">Horaires</h2>
+          <p className="text-lg"><strong>Lundi - Vendredi :</strong> 12h00 - 15h00, 19h00 - 22h00</p>
+          <p className="text-lg"><strong>Samedi :</strong> 12h00 - 23h00</p>
+          <p className="text-lg"><strong>Dimanche :</strong> Fermé</p>
         </div>
         <div className="text-left">
-          <h2 className="text-xl font-semibold">Adresse</h2>
-          <p className="text-gray-600">123 Rue de la Gastronomie, 75000 Paris</p>
+          <h2 className="text-2xl font-semibold mb-4">Adresse</h2>
+          <p className="text-gray-400 text-lg">123 Rue de la Gastronomie, 75000 Paris</p>
         </div>
       </div>
-      
     </section>
   );
 }
