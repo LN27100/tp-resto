@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+.font-bubblegum {
+  font-family: 'Bubblegum Sans', cursive;
+}
+
 
 :root {
   --background: #ffffff;

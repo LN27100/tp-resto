@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         description,
         difficulty,
         time,
-        userId: userStringId, // Envoie un userId de type String à Prisma
+        userId: userStringId, 
         ingredients: { create: ingredients },
         steps: { create: steps },
       },
@@ -33,3 +33,19 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
 }
+
+export async function GET(req: Request) {
+  try {
+    const recipes = await prisma.recipe.findMany({
+      include: {
+        ingredients: true,
+        steps: true,
+      },
+    });
+    return NextResponse.json(recipes, { status: 200 });
+  } catch (error) {
+    console.error("Erreur API:", error);
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+  }
+}
+
