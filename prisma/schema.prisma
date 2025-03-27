@@ -27,6 +27,7 @@ model Recipe {
   description String
   difficulty  Int
   time        Int
+  imageUrl    String?     
   ingredients Ingredient[]
   steps       Step[]
   userId      String

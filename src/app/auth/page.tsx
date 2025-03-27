@@ -29,7 +29,7 @@ export default function Login() {
     <section className="py-8">
       <div className="flex justify-center">
         <div className="border-emerald-600 border rounded-lg p-8 shadow-md w-96 text-left">
-          <h2 className="text-2xl font-semibold mb-4">Connexion</h2>
+          <h2 className="flex justify-center text-2xl font-semibold mb-4">Connexion</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
@@ -52,7 +52,7 @@ export default function Login() {
             {error && <p className="text-red-500">{error}</p>}
             <button
               type="submit"
-              className="w-full bg-emerald-600 text-white px-6 py-2 rounded"
+              className="w-full bg-emerald-700 hover:bg-emerald-500 text-white px-6 py-2 rounded"
             >
               Se connecter
             </button>

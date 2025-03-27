@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AddRecipeModal from "@/components/AddRecipeModal";
-import '@/app/styles/global.css'; 
+import "@/app/styles/global.css";
 
 interface Recipe {
   id: string;
@@ -55,34 +55,47 @@ export default function RecipesPage() {
     return null;
   }
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => {
+    if (session) {
+      setIsModalOpen(true);
+    } else {
+      console.error("User is not authenticated");
+      router.push("/auth");
+    }
+  };
+
   const closeModal = () => setIsModalOpen(false);
 
   return (
     <section className="py-10">
-      <button
-        onClick={openModal}
-        className="cursor-pointer bg-emerald-700 hover:bg-emerald-500 text-white px-4 py-2 rounded mt-4"
-      >
-        Ajouter une recette
-      </button>
-            <div className="flex justify-center mt-8 space-x-40">
-            <div className="border-emerald-600 border bg-gray-700 p-6 rounded shadow-md w-full max-w-lg">
+      {session && (
+        <button
+          onClick={openModal}
+          className="cursor-pointer bg-emerald-700 hover:bg-emerald-500 text-white px-4 py-2 rounded mt-4"
+        >
+          Ajouter une recette
+        </button>
+      )}
 
-      <h2 className="flex justify-center text-2xl text-emerald-500 font-bubblegum font-bold text-center">Nos Recettes</h2>
-      
-      
-      <div className="mt-6 space-y-4">
-        {recipes.map((recipe) => (
-          <div key={recipe.id} className="text-center">
-            <Link href={`/recipes/${recipe.id}`} className="bg-grey-600 hover:bg-slate-600 p-2">
-              {recipe.name}
-            </Link>
+      <div className="flex justify-center mt-8 space-x-40">
+        <div className="border-emerald-600 border bg-gray-700 p-6 rounded shadow-md w-full max-w-lg">
+          <h2 className="flex justify-center text-2xl text-emerald-500 font-bubblegum font-bold text-center">
+            Nos Recettes
+          </h2>
+          <div className="mt-6 space-y-4">
+            {recipes.map((recipe) => (
+              <div key={recipe.id} className="text-center">
+                <Link
+                  href={`/recipes/${recipe.id}`}
+                  className="bg-grey-600 hover:bg-slate-600 p-2"
+                >
+                  {recipe.name}
+                </Link>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      {isModalOpen && <AddRecipeModal closeModal={closeModal} />}
-      </div>
+          {isModalOpen && <AddRecipeModal closeModal={closeModal} />}
+        </div>
       </div>
     </section>
   );

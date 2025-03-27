@@ -1,4 +1,3 @@
-// app/api/recipes/[id]/route.tsx
 import { NextResponse } from "next/server";
 import prisma from "@/app/utils/db";
 

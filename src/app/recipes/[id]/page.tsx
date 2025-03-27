@@ -14,6 +14,7 @@ interface Recipe {
   time: number;
   ingredients: { name: string; quantity: string }[];
   steps: { instruction: string; ingredients: string }[];
+  imageUrl?: string;
 }
 
 export default function RecipeDetail({ params }: { params: Promise<{ id: string }> }) {
@@ -42,7 +43,6 @@ export default function RecipeDetail({ params }: { params: Promise<{ id: string 
   
     fetchRecipe();
   }, [id]);
-  
 
   if (loading) {
     return <p>Loading...</p>;
@@ -55,30 +55,33 @@ export default function RecipeDetail({ params }: { params: Promise<{ id: string 
   return (
     <section className="py-10">
       <div className="flex justify-center mt-8 space-x-40">
-      <div className="border-emerald-600 border bg-gray-700 p-6 rounded shadow-md w-full max-w-lg">
-      <h2 className="flex justify-center text-3xl font-bubblegum font-bold">{recipe.name}</h2>
-      <p className="mt-4 text-gray-400">{recipe.description}</p>
-      <div className="mt-6">
-        <h3 className="text-2xl text-emerald-600 font-semibold">Ingrédients</h3>
-        <ul>
-          {recipe.ingredients.map((ingredient, index) => (
-            <li key={index}>
-              {ingredient.name} - {ingredient.quantity}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="mt-6">
-        <h3 className="text-2xl text-emerald-600 font-semibold">Étapes</h3>
-        <ol>
-          {recipe.steps.map((step, index) => (
-            <li key={index}>
-              {step.instruction}
-            </li>
-          ))}
-        </ol>
-      </div>
-      </div>
+        <div className="border-emerald-600 border bg-gray-700 p-6 rounded shadow-md w-full max-w-lg">
+          <h2 className="flex justify-center text-3xl font-bubblegum font-bold">{recipe.name}</h2>
+          {recipe.imageUrl && (
+            <img src={recipe.imageUrl} alt={recipe.name} className="w-full h-64 object-cover mt-4" />
+          )}
+          <p className="mt-4 text-gray-400">{recipe.description}</p>
+          <div className="mt-6">
+            <h3 className="text-2xl text-emerald-600 font-semibold">Ingrédients</h3>
+            <ul>
+              {recipe.ingredients.map((ingredient, index) => (
+                <li key={index}>
+                  {ingredient.name} - {ingredient.quantity}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-6">
+            <h3 className="text-2xl text-emerald-600 font-semibold">Étapes</h3>
+            <ol>
+              {recipe.steps.map((step, index) => (
+                <li key={index}>
+                  {step.instruction}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
       </div>
     </section>
   );
